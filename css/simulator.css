@@ -1,0 +1,18 @@
+#simulator {
+  position: relative;
+  left: 50%;
+  margin-left: -183.5px;
+  top: 20px;
+  width: 367px;
+  height: 750px;
+  background-image: url('img/iPhone5.png');
+}
+#simulator #simulator-screen {
+  position: absolute;
+  top: 116px;
+  left: 25px;
+  width: 320px;
+  height: 480px;
+  background-color: black;
+  border: 0;
+}
