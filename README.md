@@ -1,6 +1,8 @@
-#MobileSimulator#
+#iOS Simulator#
 
-###A purely JS based mobile simulator for Cordova apps or mobile HTML pages.###
+###A 100% JS based iOS simulator for Cordova apps or mobile HTML pages.###
+
+Completely client side code that can be placed on ANY website running with ANY framework on ANY server using ANY server side language.
 
 ***Need support? Create an issue, we will help!***
 
@@ -50,6 +52,7 @@
 * More customization items in the config.xml
 * Creation of a cordova.js for the simulator that maps the cordova functions to browser native functions, or trigger an iPhone simulation of the function (Ex: using `navigator.notification.alert()` shows an iPhone simulated and styled popup in the simulator screen.) *This file would replace the cordova-x.x.x.js files in the individual projects*
 * Feedback app embedded in the simulator (but optional through config settings) to provide feedback about the apps to the developer.
+
 **PLEASE contribute by helping with these features or any others improvements by using pull requests**
 
 *Note to developers:*
