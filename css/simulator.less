@@ -1,5 +1,17 @@
 @lightblue: #C0DEED;
 @blue: #8EC1DA;
+@font: arial;
+
+.displaySettings {
+	position:absolute; 
+	top:116px; 
+	left:25px; 
+	width:320px; 
+	height:480px; 
+	background-color:black; 
+	border:0;
+	overflow:hidden;
+}
 
 body { 
 	background-color:@lightblue;
@@ -12,16 +24,43 @@ body {
 		height:750px; 
 		background-image:url('../img/iPhone5.png'); 
 		background-repeat:no-repeat; 
-		#simulator-screen {
-			position:absolute; 
-			top:116px; 
-			left:25px; 
-			width:320px; 
-			height:480px; 
-			background-color:black; 
-			border:0; 
+		#home-screen {
+			.displaySettings;
+			.app-list {
+				margin:10px;
+				padding:0;
+				list-style:none;
+				width:320px - 20px;
+				height:480px - 20px;
+				overflow:hidden;
+				.app-item {
+					float:left;
+					margin:10px 9px;
+					a {
+						.app-icon {
+							width:57px;
+							height:57px;
+							border-radius:11px;
+							box-shadow:0 2px 7px #444444;
+						}
+						.app-title {
+							color:white;
+							font-family:@font;
+							font-size:10px;
+							text-align:center;
+							margin:0;
+							padding:0;
+							width:57px;
+							overflow:hidden;
+						}
+					}
+				}
+			}
 		}
-		#simulator-home-button {
+		#simulator-screen {
+			.displaySettings;
+		}
+		#home-button {
 			position:absolute;
 			bottom:64px;
 			left:151px;
@@ -30,4 +69,8 @@ body {
 			border-radius:33px;
 		}
 	} 
+}
+
+.hidden {
+	display:none;
 }

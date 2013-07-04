@@ -6,15 +6,17 @@
 		<title>Mobile Simulator</title>
 		<meta name="description" content="An iPhone html simuator for HTML5 mobile apps" />
 		<meta name="author" content="Scott Robinson" />
-		<meta name="viewport" content="width=device-width; initial-scale=1.0" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		
 		<link rel="stylesheet" href="css/simulator.css" type="text/css" media="screen" charset="utf-8">
+		<script type="text/javascript" src="js/jquery-1.10.2.min.js" charset="utf-8"></script>
 		<script type="text/javascript" src="js/simulator.js" charset="utf-8"></script>
 	</head>
 	<body>
 		<div id="simulator">
-			<iframe id="simulator-screen" src=""></iframe>
-			<div id="simulator-home-button"></div>
+			<iframe id="simulator-screen" class="hidden" seamless src=""></iframe>
+			<div id="home-screen"></div>
+			<div id="home-button"></div>
 		</div>
 	</body>
 </html>

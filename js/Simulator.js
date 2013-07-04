@@ -13,11 +13,47 @@ $(document).ready(function () {
 
 var Simulator = {
 	Init: function () {
-		$('#simulator-home-button').off('click').on('click', Simulator.Home);
+		$('#home-button').off('click').on('click', function () {Simulator.Home();});
 		Simulator.Home();
 	},
 	Home: function () {
-		//Load app icons
-		alert("Home");
+		Simulator.ShowHomeScreen();
+		Simulator.LoadBackground();
+		var $apps = Simulator.LoadApps();
+		$('#home-screen').empty().append($apps);
+	},
+	LoadBackground: function () {
+		$.get('config.xml', function (data) {
+			var $bg = $(data).find('background');
+			if($bg.find('image').text() !== "") {
+				$('#home-screen').css('background-image', "url('" + $bg.find('image').text() + "')");
+			} else {
+				$('#home-screen').css('background-color', $bg.find('color').text());
+			}
+		});
+	},
+	LoadApps: function () {
+		var $apps = $('<ul/>').addClass('app-list');
+		$.get('config.xml', function (data) {
+			$(data).find('app').each(function () {
+				$apps.append(
+					$('<li/>').addClass('app-item').append(
+						$('<a/>').attr('data-loc', $(this).find('index').text()).append(
+							$('<img/>').attr('src', $(this).find('icon').text()).addClass('app-icon'),
+							$('<p/>').html($(this).find('title').text()).addClass('app-title')
+						).off('click').on('click', function () {Simulator.StartApp($(this).attr('data-loc'));})
+					)
+				);
+			});
+		});
+		return $apps;
+	},
+	ShowHomeScreen: function () {
+		$('#home-screen').removeClass('hidden');
+		$('#simulator-screen').addClass('hidden').attr('src', "");
+	},
+	StartApp: function (url) {
+		$('#simulator-screen').removeClass('hidden').attr('src', url);
+		$('#home-screen').addClass('hidden');
 	}
 };

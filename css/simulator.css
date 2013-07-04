@@ -1,3 +1,13 @@
+.displaySettings {
+  position: absolute;
+  top: 116px;
+  left: 25px;
+  width: 320px;
+  height: 480px;
+  background-color: black;
+  border: 0;
+  overflow: hidden;
+}
 body {
   background-color: #c0deed;
 }
@@ -11,6 +21,44 @@ body #simulator {
   background-image: url('../img/iPhone5.png');
   background-repeat: no-repeat;
 }
+body #simulator #home-screen {
+  position: absolute;
+  top: 116px;
+  left: 25px;
+  width: 320px;
+  height: 480px;
+  background-color: black;
+  border: 0;
+  overflow: hidden;
+}
+body #simulator #home-screen .app-list {
+  margin: 10px;
+  padding: 0;
+  list-style: none;
+  width: 300px;
+  height: 460px;
+  overflow: hidden;
+}
+body #simulator #home-screen .app-list .app-item {
+  float: left;
+  margin: 10px 9px;
+}
+body #simulator #home-screen .app-list .app-item a .app-icon {
+  width: 57px;
+  height: 57px;
+  border-radius: 11px;
+  box-shadow: 0 2px 7px #444444;
+}
+body #simulator #home-screen .app-list .app-item a .app-title {
+  color: white;
+  font-family: arial;
+  font-size: 10px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  width: 57px;
+  overflow: hidden;
+}
 body #simulator #simulator-screen {
   position: absolute;
   top: 116px;
@@ -19,12 +67,16 @@ body #simulator #simulator-screen {
   height: 480px;
   background-color: black;
   border: 0;
+  overflow: hidden;
 }
-body #simulator #simulator-home-button {
+body #simulator #home-button {
   position: absolute;
   bottom: 64px;
   left: 151px;
   width: 69px;
   height: 69px;
   border-radius: 33px;
+}
+.hidden {
+  display: none;
 }

@@ -1,0 +1,18 @@
+<simulator version="1.0.0">
+	<background>
+		<color>red</color>
+		<image>/img/bg.png</image>
+	</background>
+	<apps>
+		<app>
+			<title>My App 1</title>
+			<icon>/apps/MyApp1/icon.png</icon>
+			<index>/apps/MyApp1/index.html</index>
+		</app>
+		<app>
+			<title>My App 2</title>
+			<icon>/apps/MyApp2/icon.png</icon>
+			<index>/apps/MyApp2/index.html</index>
+		</app>
+	</apps>
+</simulator>
