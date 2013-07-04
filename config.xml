@@ -1,13 +1,13 @@
 <simulator version="1.0.0">
 	<background>
-		<color>red</color>
-		<image>/img/bg.png</image>
+    	<color>red</color> <!-- The color you want the background of the home page to be -->
+		<image>/img/bg.png</image> <!-- A background image for the home page, setting this will overrite the color setting above-->
 	</background>
 	<apps>
 		<app>
-			<title>My App 1</title>
-			<icon>/apps/MyApp1/icon.png</icon>
-			<index>/apps/MyApp1/index.html</index>
+			<title>My App 1</title> <!-- The text you would like to show up under the app icon -->
+			<icon>/apps/MyApp1/icon.png</icon> <!-- relative url to the icon for the app -->
+			<index>/apps/MyApp1/index.html</index> <!-- relative url to the index or home page for the app -->
 		</app>
 		<app>
 			<title>My App 2</title>
