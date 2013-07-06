@@ -5,14 +5,14 @@
 	</background>
 	<apps>
 		<app>
-			<title>My App 1</title> <!-- The text you would like to show up under the app icon -->
-			<icon>/apps/MyApp1/icon.png</icon> <!-- relative url to the icon for the app -->
-			<index>/apps/MyApp1/index.html</index> <!-- relative url to the index or home page for the app -->
+			<title>O2 Calculator</title> <!-- The text you would like to show up under the app icon -->
+			<icon>/apps/O2Calculator/icon.png</icon> <!-- relative url to the icon for the app -->
+			<index>/apps/O2Calculator/index.html</index> <!-- relative url to the index or home page for the app -->
 		</app>
 		<app>
-			<title>My App 2</title>
-			<icon>/apps/MyApp2/icon.png</icon>
-			<index>/apps/MyApp2/index.html</index>
+			<title>LZA</title>
+			<icon>/apps/LZA/icon.png</icon>
+			<index>/apps/LZA/index.html</index>
 		</app>
 	</apps>
 </simulator>

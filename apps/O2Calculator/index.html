@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.3.1.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/O2Calculator.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <title>O2 Calculator</title>
+        <script type="text/javascript" src="js/cordova-2.6.0.js"></script>
+        <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="js/jquery.mobile-1.3.1.min.js"></script>
+        <script type="text/javascript" src="js/jquery.form.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/PushWooshPlugin.js"></script>
+    </head>
+    <body>
+        <!--Free Flow-->
+        <div id="free-flow" data-role="page" data-theme="a">
+            <div data-role="header">
+                <a href="#feedback">&lt;- Feedback</a>
+                <h1>Free Flow</h1>
+                <a href="#vent">Vent Calc -&gt;</a>
+            </div>
+            <div data-role="content">
+               <div class="ui-grid-a">
+                    <div class="ui-block-a"><input id="FFPSI" type="number" placeholder="PSI" /></div>
+                    <div class="ui-block-b"><button id="FFCalculate" onclick="FreeFlow.Calculate()">Calculate</button></div>
+                </div>
+                <div class="ui-grid-a">
+                    <div class="ui-block-a"><input id="FFLPM" type="number" placeholder="LPM" /></div>
+                    <div class="ui-block-b"><button id="FFReset" onclick="FreeFlow.Reset()">Reset</button></div>
+                </div>
+                <p class="center-text">Enter PSI and LPM, then press &quot;Calculate&quot;</p>
+                <div class="ui-grid-a">
+                    <div class="ui-block-a"><a href="#d-details" id="FFD" data-role="button">D:</a></div>
+                    <div class="ui-block-b"><a href="#m-details" id="FFM" data-role="button">M:</a></div>
+                </div>
+                <div class="ui-grid-a">
+                    <div class="ui-block-a"><a href="#jd-details" id="FFJD" data-role="button">JD:</a></div>
+                    <div class="ui-block-b"><a href="#h-details" id="FFH" data-role="button">H:</a></div>
+                </div>
+                <div class="ui-grid-a">
+                    <div class="ui-block-a"><a  href="#e-details" id="FFE" data-role="button">E:</a></div>
+                    <div class="ui-block-b"></div>
+                </div>
+                <button onclick="FreeFlow.Timer()"><span id="FFTimerMessage">Start Timer</span>
+                <h1 id="FFTimer" class="center-text">00:00:00</h1>
+                </button>
+            </div>
+        </div>
+        <!--Vent Page-->
+        <div id="vent" data-role="page" data-theme="a">
+            <div data-role="header">
+                <a href="#free-flow">&lt;- Free Flow</a>
+                <h1>Vent</h1>
+                <a href="#about">About -&gt;</a>
+            </div>
+            <div data-role="content">
+                <div class="ui-grid-a">
+                    <div class="ui-block-a"><input id="VPSI" type="number" placeholder="PSI" data-mini="true" /></div>
+                </div>
+                <div class="ui-grid-a">
+                    <div class="ui-block-a"><input id="VRate" type="number" placeholder="Rate" data-mini="true" /></div>
+                    <div class="ui-block-b"><button data-mini="true" onclick="Vent.Calculate()">Calculate</button></div>
+                </div>
+                <div class="ui-grid-a">
+                    <div class="ui-block-a"><input id="VVol" type="number" placeholder="Tidal volume" data-mini="true" /></div>
+                    <div class="ui-block-b"><button data-mini="true" onclick="Vent.Reset()">Reset</button></div>
+                </div>
+                <div class="ui-grid-a">
+                    <div class="ui-block-a"><input id="VFiO2" type="number" placeholder="FiO2" value="100" data-mini="true" /></div>
+                </div>
+                <p class="center-text">Enter PSI, Rate, Tidal Volume, and FiO2, then press &quot;Calculate&quot;</p>
+                <div class="ui-grid-a">
+                    <div class="ui-block-a"><a href="#d-details" id="VD" data-role="button">D:</a></div>
+                    <div class="ui-block-b"><a href="#m-details" id="VM" data-role="button">M:</a></div>
+                </div>
+                <div class="ui-grid-a">
+                    <div class="ui-block-a"><a href="#jd-details" id="VJD" data-role="button">JD:</a></div>
+                    <div class="ui-block-b"><a href="#h-details" id="VH" data-role="button">H:</a></div>
+                </div>
+                <div class="ui-grid-a">
+                    <div class="ui-block-a"><a href="#e-details" id="VE" data-role="button">E:</a></div>
+                    <div class="ui-block-b"></div>
+                </div>
+                <button onclick="Vent.Timer()"><span id="VTimerMessage">Start Timer</span>
+                <h1 id="VTimer" class="center-text">00:00:00</h1>
+                </button>
+            </div>
+        </div>
+        <!--About Page-->
+        <div id="about" data-role="page" data-theme="a">
+            <div data-role="header">
+                <a href="#vent">&lt;- Vent Calc</a>
+                <h1>About</h1>
+                <a href="#feedback">Feedback -&gt;</a>
+            </div>
+            <div data-role="content">
+                <p class="center-text">
+                    To calculate time remaining in an oxygen cylinder enter the PSI on the regulator, the LPM  of oxygen that the patient will be receiving, or the Respiratory Rate and Tidal Volume that the patient is receiving and press &quot;Calculate&quot;
+                </p>
+                <h2 class="center-text"><i>Thank you for your interest in this app!</i></h2>
+                <p class="center-text"><small>Please send us any feedback, questions, comments, complaints, or app ideas using the feedback page.</small></p>
+                <div class="ui-grid-a">
+                    <div class="ui-block-a">
+                        <img class="logo" src="img/FacebookIcon.jpeg" onclick="Details.ShowFacebook()" />
+                    </div>
+                    <div class="ui-block-b">
+                        <img class="logo right" src="img/TwitterIcon.jpeg" onclick="Details.ShowTwitter()" />
+                    </div>
+                </div>
+                <p class="center-text"><small>O2 Calculator &copy; Scott Robinson 2011-2013</small></p>
+            </div>
+        </div>
+        <!--Feedback Page-->
+        <div id="feedback" data-role="page" data-theme="a">
+            <div data-role="header">
+                <a href="#about">&lt;- About</a>
+                <h1>Feedback</h1>
+                <a href="#free-flow">Free Flow -&gt;</a>
+            </div>
+            <div data-role="content">
+                <p class="center-text">
+                    Please send us any feedback, comments, suggestions, complaints, or app ideas below. Your feedback is confidential unless you enter an email, in which case we'll get back to you.
+                </p>
+                <form id="feedback-form" action="http://bluelineapps.net/SendSuggestion.php" method="post">
+                    <input type="hidden" name="suggestionType" value="Feedback" />
+                    <input type="hidden" name="appName" value="O2Calculator-iOS" />
+                    <textarea id="feedback-textarea" name="suggestion"></textarea>
+                    <input id="feedback-email" name="email" type="email" placeholder="email (optional)" />
+                    <input type="submit" value="Send Feedback" />
+                </form>
+                <p class="center-text"><i>Thank you for your feedback!</i></p>
+            </div>
+        </div>
+        <!--Details Page - D -->
+        <div id="d-details" data-role="page" data-theme="a">
+            <div data-role="header">
+                <a class="back-button" href="#free-flow">Back</a>
+                <h1>Details</h1>
+            </div>
+            <div data-role="content">
+                <div class="ui-grid-a">
+                    <div class="ui-block-a"><img src="img/O2Tanks.jpg" width="150" onclick="Details.ShowTanks()" /></div>
+                    <div class="ui-block-b">
+                        <h2 class="center-text">D Cylinder</h2>
+                        <p class="center-text">Service Pressure:</p>
+                        <p class="center-text"><small>2,200 PSI</small></p>
+                        <p class="center-text">Capacity:</p>
+                        <p class="center-text"><small>425 Liters</small></p>
+                    </div>
+                </div>
+                <br>
+                <p id="d-duration" class="center-text"></p>
+                <br>
+                <div class="ui-grid-a FF-Calc" style="display:none;">
+                    <div class="ui-block-a">
+                        <p class="center-text">0.19 x <span class="psi"></span> psi</p>
+                        <p class="center-text">----------------------</p>
+                        <p class="center-text"><span class="lpm"></span> L/min</p>
+                    </div>
+                    <div class="ui-block-b">
+                        <br>
+                        <p>= <span class="d-equation-minutes"></span> Minutes</p>
+                    </div>
+                </div>
+                <div class="ui-grid-a V-Calc" style="display:none;">
+                    <div class="ui-block-a">
+                        <p class="center-text">0.19 x <span class="psi"></span> psi</p>
+                        <p class="center-text">----------------------</p>
+                        <p class="center-text"><small><span class="rr"></span> x <span class="tidal-volume"></span> mL/min = <span class="lpm"></span> L/min</small></p>
+                    </div>
+                    <div class="ui-block-b">
+                        <br>
+                        <p><small>x <span class="fio2"></span>% = <span class="d-equation-minutes"></span> Minutes</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Details Page - JD -->
+        <div id="jd-details" data-role="page" data-theme="a">
+            <div data-role="header">
+                <a class="back-button" href="#free-flow">Back</a>
+                <h1>Details</h1>
+            </div>
+            <div data-role="content">
+                <div class="ui-grid-a">
+                    <div class="ui-block-a"><img src="img/O2Tanks.jpg" width="150" /></div>
+                    <div class="ui-block-b">
+                        <h2 class="center-text">JD Cylinder</h2>
+                        <p class="center-text">Service Pressure:</p>
+                        <p class="center-text"><small>2,200 PSI</small></p>
+                        <p class="center-text">Capacity:</p>
+                        <p class="center-text"><small>640 Liters</small></p>
+                    </div>
+                </div>
+                <br>
+                <p id="jd-duration" class="center-text"></p>
+                <br>
+                <div class="ui-grid-a FF-Calc" style="display:none;">
+                    <div class="ui-block-a">
+                        <p class="center-text">0.29 x <span class="psi"></span> psi</p>
+                        <p class="center-text">----------------------</p>
+                        <p class="center-text"><span class="lpm"></span> L/min</p>
+                    </div>
+                    <div class="ui-block-b">
+                        <br>
+                        <p>= <span class="jd-equation-minutes"></span> Minutes</p>
+                    </div>
+                </div>
+                <div class="ui-grid-a V-Calc" style="display:none;">
+                    <div class="ui-block-a">
+                        <p class="center-text">0.29 x <span class="psi"></span> psi</p>
+                        <p class="center-text">----------------------</p>
+                        <p class="center-text"><small><span class="rr"></span> x <span class="tidal-volume"></span> mL/min = <span class="lpm"></span> L/min</small></p>
+                    </div>
+                    <div class="ui-block-b">
+                        <br>
+                        <p><small>x <span class="fio2"></span>% = <span class="jd-equation-minutes"></span> Minutes</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Details Page - E -->
+        <div id="e-details" data-role="page" data-theme="a">
+            <div data-role="header">
+                <a class="back-button" href="#free-flow">Back</a>
+                <h1>Details</h1>
+            </div>
+            <div data-role="content">
+                <div class="ui-grid-a">
+                    <div class="ui-block-a"><img src="img/O2Tanks.jpg" width="150" /></div>
+                    <div class="ui-block-b">
+                        <h2 class="center-text">E Cylinder</h2>
+                        <p class="center-text">Service Pressure:</p>
+                        <p class="center-text"><small>2,200 PSI</small></p>
+                        <p class="center-text">Capacity:</p>
+                        <p class="center-text"><small>680 Liters</small></p>
+                    </div>
+                </div>
+                <br>
+                <p id="e-duration" class="center-text"></p>
+                <br>
+                <div class="ui-grid-a FF-Calc" style="display:none;">
+                    <div class="ui-block-a">
+                        <p class="center-text">0.31 x <span class="psi"></span> psi</p>
+                        <p class="center-text">----------------------</p>
+                        <p class="center-text"><span class="lpm"></span> L/min</p>
+                    </div>
+                    <div class="ui-block-b">
+                        <br>
+                        <p>= <span class="e-equation-minutes"></span> Minutes</p>
+                    </div>
+                </div>
+                <div class="ui-grid-a V-Calc" style="display:none;">
+                    <div class="ui-block-a">
+                        <p class="center-text">0.31 x <span class="psi"></span> psi</p>
+                        <p class="center-text">----------------------</p>
+                        <p class="center-text"><small><span class="rr"></span> x <span class="tidal-volume"></span> mL/min = <span class="lpm"></span> L/min</small></p>
+                    </div>
+                    <div class="ui-block-b">
+                        <br>
+                        <p><small>x <span class="fio2"></span>% = <span class="e-equation-minutes"></span> Minutes</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Details Page - M -->
+        <div id="m-details" data-role="page" data-theme="a">
+            <div data-role="header">
+                <a class="back-button" href="#free-flow">Back</a>
+                <h1>Details</h1>
+            </div>
+            <div data-role="content">
+                <div class="ui-grid-a">
+                    <div class="ui-block-a"><img src="img/O2Tanks.jpg" width="150" /></div>
+                    <div class="ui-block-b">
+                        <h2 class="center-text">M Cylinder</h2>
+                        <p class="center-text">Service Pressure:</p>
+                        <p class="center-text"><small>2,200 PSI</small></p>
+                        <p class="center-text">Capacity:</p>
+                        <p class="center-text"><small>3455 Liters</small></p>
+                    </div>
+                </div>
+                <br>
+                <p id="m-duration" class="center-text"></p>
+                <br>
+                <div class="ui-grid-a FF-Calc" style="display:none;">
+                    <div class="ui-block-a">
+                        <p class="center-text">1.57 x <span class="psi"></span> psi</p>
+                        <p class="center-text">----------------------</p>
+                        <p class="center-text"><span class="lpm"></span> L/min</p>
+                    </div>
+                    <div class="ui-block-b">
+                        <br>
+                        <p>= <span class="m-equation-minutes"></span> Minutes</p>
+                    </div>
+                </div>
+                <div class="ui-grid-a V-Calc" style="display:none;">
+                    <div class="ui-block-a">
+                        <p class="center-text">1.57 x <span class="psi"></span> psi</p>
+                        <p class="center-text">----------------------</p>
+                        <p class="center-text"><small><span class="rr"></span> x <span class="tidal-volume"></span> mL/min = <span class="lpm"></span> L/min</small></p>
+                    </div>
+                    <div class="ui-block-b">
+                        <br>
+                        <p><small>x <span class="fio2"></span>% = <span class="m-equation-minutes"></span> Minutes</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Details Page - H -->
+        <div id="h-details" data-role="page" data-theme="a">
+            <div data-role="header">
+                <a class="back-button" href="#free-flow">Back</a>
+                <h1>Details</h1>
+            </div>
+            <div data-role="content">
+                <div class="ui-grid-a">
+                    <div class="ui-block-a"><img src="img/O2Tanks.jpg" width="150" /></div>
+                    <div class="ui-block-b">
+                        <h2 class="center-text">H Cylinder</h2>
+                        <p class="center-text">Service Pressure:</p>
+                        <p class="center-text"><small>2,200 PSI</small></p>
+                        <p class="center-text">Capacity:</p>
+                        <p class="center-text"><small>7080 Liters</small></p>
+                    </div>
+                </div>
+                <br>
+                <p id="h-duration" class="center-text"></p>
+                <br>
+                <div class="ui-grid-a FF-Calc" style="display:none;">
+                    <div class="ui-block-a">
+                        <p class="center-text">3.22 x <span class="psi"></span> psi</p>
+                        <p class="center-text">----------------------</p>
+                        <p class="center-text"><span class="lpm"></span> L/min</p>
+                    </div>
+                    <div class="ui-block-b">
+                        <br>
+                        <p>= <span class="h-equation-minutes"></span> Minutes</p>
+                    </div>
+                </div>
+                <div class="ui-grid-a V-Calc" style="display:none;">
+                    <div class="ui-block-a">
+                        <p class="center-text">3.22 x <span class="psi"></span> psi</p>
+                        <p class="center-text">----------------------</p>
+                        <p class="center-text"><small><span class="rr"></span> x <span class="tidal-volume"></span> mL/min = <span class="lpm"></span> L/min</small></p>
+                    </div>
+                    <div class="ui-block-b">
+                        <br>
+                        <p><small>x <span class="fio2"></span>% = <span class="h-equation-minutes"></span> Minutes</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            App.Initialize();
+        </script>
+    </body>
+</html>
