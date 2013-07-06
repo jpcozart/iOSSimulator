@@ -1,6 +1,8 @@
-#MobileSimulator#
+#iOS Simulator#
 
-###A purely JS based mobile simulator for Cordova apps or mobile HTML pages.###
+###A 100% JS based iOS simulator for Cordova apps or mobile HTML pages.###
+
+Completely client side code that can be placed on ANY website running with ANY framework on ANY server using ANY server side language.
 
 ***Need support? Create an issue, we will help!***
 
@@ -18,25 +20,26 @@
 
 1. Create a folder in the *apps* folder and move your project/app/mobile site files into that folder.
 2. Customize **config.xml** with your configuration settings
- 	
-	<simulator version="1.0.0">
-    	<background>
-	    	<color>red</color> <!-- The color you want the background of the home page to be -->
-			<image>/img/bg.png</image> <!-- A background image for the home page, setting this will overrite the color setting above-->
-		</background>
-		<apps>
-			<app>
-				<title>My App 1</title> <!-- The text you would like to show up under the app icon -->
-				<icon>/apps/MyApp1/icon.png</icon> <!-- relative url to the icon for the app -->
-				<index>/apps/MyApp1/index.html</index> <!-- relative url to the index or home page for the app -->
-			</app>
-			<app>
-			    <title>My App 2</title>
-			    <icon>/apps/MyApp2/icon.png</icon>
-			    <index>/apps/MyApp2/index.html</index>
-		    </app>
-	    </apps>
-    </simulator>
+ 
+		<simulator version="1.0.0">
+			<background>
+				<color>red</color> <!-- The color you want the background of the home page to be -->
+				<image>/img/bg.png</image> <!-- A background image for the home page, setting this will overrite the color setting above-->
+			</background>
+			<apps>
+				<app>
+					<title>My App 1</title> <!-- The text you would like to show up under the app icon -->
+					<icon>/apps/MyApp1/icon.png</icon> <!-- relative url to the icon for the app -->
+					<index>/apps/MyApp1/index.html</index> <!-- relative url to the index or home page for the app -->
+				</app>
+				<app>
+					<title>My App 2</title>
+					<icon>/apps/MyApp2/icon.png</icon>
+					<index>/apps/MyApp2/index.html</index>
+				</app>
+			</apps>
+		</simulator>
+
 
 3. If using cordova change `document.addEventListener('deviceready', function ()[], false);` to `document.addEventListener("DOMContentLoaded", function () {}, false);` or the jquery `$(document).ready(function () {});`.
 
@@ -49,6 +52,7 @@
 * More customization items in the config.xml
 * Creation of a cordova.js for the simulator that maps the cordova functions to browser native functions, or trigger an iPhone simulation of the function (Ex: using `navigator.notification.alert()` shows an iPhone simulated and styled popup in the simulator screen.) *This file would replace the cordova-x.x.x.js files in the individual projects*
 * Feedback app embedded in the simulator (but optional through config settings) to provide feedback about the apps to the developer.
+
 **PLEASE contribute by helping with these features or any others improvements by using pull requests**
 
 *Note to developers:*
