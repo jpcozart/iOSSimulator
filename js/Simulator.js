@@ -34,16 +34,18 @@ var Simulator = {
 	},
 	LoadApps: function () {
 		var $apps = $('<ul/>').addClass('app-list');
-		$.get('config.xml', function (data) {
-			$(data).find('app').each(function () {
-				$apps.append(
-					$('<li/>').addClass('app-item').append(
-						$('<a/>').attr('data-loc', $(this).find('index').text()).append(
-							$('<img/>').attr('src', $(this).find('icon').text()).addClass('app-icon'),
-							$('<p/>').html($(this).find('title').text()).addClass('app-title')
-						).off('click').on('click', function () {Simulator.StartApp($(this).attr('data-loc'));})
-					)
-				);
+		$.get('config.xml', function (data) { //Open the config.xml file
+			$(data).find('app').each(function () { //find all apps
+				if($(this).find('enabled').text() === "true") { //Only show apps if marked as enabled
+					$apps.append(
+						$('<li/>').addClass('app-item').append(
+							$('<a/>').attr('data-loc', $(this).find('index').text()).append(
+								$('<img/>').attr('src', $(this).find('icon').text()).addClass('app-icon'),
+								$('<p/>').html($(this).find('title').text()).addClass('app-title')
+							).off('click').on('click', function () {Simulator.StartApp($(this).attr('data-loc'));})
+						)
+					);
+				}
 			});
 		});
 		return $apps;
@@ -53,7 +55,7 @@ var Simulator = {
 		$('#simulator-screen').addClass('hidden').attr('src', "");
 	},
 	StartApp: function (url) {
-		$('#simulator-screen').removeClass('hidden').attr('src', url);
-		$('#home-screen').addClass('hidden');
+			$('#simulator-screen').removeClass('hidden').attr('src', url);
+			$('#home-screen').addClass('hidden');
 	}
 };

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+		<title>Settings</title>
+		<link rel="stylesheet" href="css/jquery.mobile-1.3.1.min.css" type="text/css" media="screen" title="no title" charset="utf-8">
+		<link rel="stylesheet" href="css/settings.css" type="text/css" media="screen" title="no title" charset="utf-8">
+		<script src="js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.form.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.mobile-1.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/settings.js" type="text/javascript" charset="utf-8"></script>	
+	</head>
+	<body>
+        <div id="settings" data-role="page" data-theme="d">
+            <div data-role="content">
+				<h2 class="header">Settings</h2>
+				<ul data-role="listview" data-inset="true">
+					<li><a href="#options">Simulator options</a></li>
+					<li><a href="#manage-apps">Manage apps</a></li>
+					<li><a href="#help">Help</a></li>
+				</ul>
+            </div>
+        </div>
+		<div id="options" data-role="page" data-theme="d">
+			<div data-role="content">
+				<h2>Simulator options</h2>
+				<form id="simulator-options-form" action="http://localhost:8000" method="post">
+					<h3>Home Screen</h3>
+					<label for="option-background-color">Background Color:</label>
+					<input type="text" id="option-background-color" placeholder="Color">
+					<label for="option-background-image">Background Image:</label>
+					<input type="text" id="option-background-image" placeholder="Image URL">
+					<hr>
+					<h3>Startup</h3>
+					<label for="option-startup-enabled">Startup enabled</label>
+					<input type="checkbox" id="option-startup-enabled">
+					<label for="option-splash-enabled">Splash Screen Enabled</label>
+					<input type="checkbox" id="option-splash-enabled">
+					<label for="option-splash-image">Splash Screen Image:</label>
+					<input type="text" id="option-splash-image" placeholder="Image URL">
+					<hr>
+					<h3>Security</h3>
+					<label for="option-password">Password:</label>
+					<input type="password" id="option-password" placeholder="Password">
+					<hr>
+					<input type="submit" id="save-options" value="Save Settings">
+				</form>
+			</div>
+		</div>
+		<div id="manage-apps" data-role="page" data-theme="d">
+			<div data-role="content">
+				<h2> Manage Apps</h2>
+				
+			</div>
+		</div>
+		<div id="help" data-role="page" data-theme="d">
+			<div data-role="content">
+				<h2>Help</h2>
+				<p>
+					Welcome to the settings app. This app will allow you to set the options for your simulator
+					without having to change the config.xml file directly. You can also use this app to enable,
+					disable, and change settings for any apps running in this simulator. You can also disable
+					this app itself. A password can also be set to block access by non-authorized personnel.
+				</p>
+			</div>
+		</div>
+	</body>
+</html>

@@ -41,7 +41,7 @@ Completely client side code that can be placed on ANY website running with ANY f
 		</simulator>
 
 
-3. If using cordova change `document.addEventListener('deviceready', function ()[], false);` to `document.addEventListener("DOMContentLoaded", function () {}, false);` or the jquery `$(document).ready(function () {});`.
+3. If using cordova change `document.addEventListener('deviceready', function (){}, false);` to `document.addEventListener("DOMContentLoaded", function () {}, false);` or the jquery `$(document).ready(function () {});`.
 
 ##Feature Requests##
 

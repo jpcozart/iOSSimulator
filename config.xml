@@ -1,18 +1,57 @@
-<simulator version="1.0.0">
-	<background>
-    	<color>red</color> <!-- The color you want the background of the home page to be -->
-		<image>/img/bg.png</image> <!-- A background image for the home page, setting this will overrite the color setting above-->
-	</background>
+<simulator version="1.1.0">
 	<apps>
 		<app>
+			<enabled>true</enabled>
 			<title>O2 Calculator</title> <!-- The text you would like to show up under the app icon -->
 			<icon>/apps/O2Calculator/icon.png</icon> <!-- relative url to the icon for the app -->
 			<index>/apps/O2Calculator/index.html</index> <!-- relative url to the index or home page for the app -->
+			<password></password>
 		</app>
 		<app>
+			<enabled>true</enabled>
 			<title>LZA</title>
 			<icon>/apps/LZA/icon.png</icon>
 			<index>/apps/LZA/index.html</index>
+			<password></password>
 		</app>
 	</apps>
+	<system>
+		<settings>
+			<background>
+		    	<color>red</color> <!-- The color you want the background of the home page to be -->
+				<image>/img/bg.png</image> <!-- A background image for the home page, setting this will overrite the color setting above-->
+			</background>
+			<startup>
+				<enabled>true</enabled>
+				<splash>
+					<enabled>true</enabled>
+					<image></image>
+				</splash>
+			</startup>
+			<security>
+					<password></password>
+			</security>
+		</settings>
+		<apps>
+			<app>
+				<enabled>true</enabled>
+				<title>Settings</title>
+				<icon>/apps/LZA/icon.png</icon>
+				<index>/system/apps/settings/settings.html</index>
+			</app>
+			<app>
+				<enabled>true</enabled>
+				<title>Mockup Creator</title>
+				<icon>/system/apps/mockup/mockup.png</icon>
+				<index>/system/apps/mockup/mockup.html</index>
+			</app>
+			<app>
+				<enabled>true</enabled>
+				<title>Feedback</title>
+				<icon>/system/apps/feedback/feedback.png</icon>
+				<index>/system/apps/feedback/feedback.html</index>
+				<email>snare_chops@yahoo.com</email>
+			</app>
+		</apps>
+	</system>
 </simulator>
