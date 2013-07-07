@@ -3,6 +3,7 @@ var fs 		= require('fs');
 var express = require('express');
 var app 	= express();
 var $		= require('jquery').create();
+var qs		= require('querystring');
 
 var server = http.createServer(
 	function (request, response) {
@@ -60,11 +61,13 @@ var server = http.createServer(
 			return(response.end(message));
 		}
 		if(request.method.toUpperCase() === "POST") {
-			var $data;
+			var query = '';
+			var $data = {};
 			var requestBodyBuffer = [];
-			request.on("data", function (chunk) {$data += chunk});
+			request.on("data", function (chunk) {query += chunk;});
 			request.on("end", function () {
-				console.log($data);
+				$data = qs.parse(query);
+				console.log($data.background);
 			});
 			
 			var message = "Settings Saved"
