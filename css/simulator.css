@@ -59,6 +59,52 @@ body #simulator #home-screen .app-list .app-item a .app-title {
   width: 57px;
   overflow: hidden;
 }
+body #simulator #home-screen #topBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 13px;
+}
+body #simulator #home-screen #topBar #signalBars .signalBall {
+  background-color: white;
+  height: 5px;
+  width: 5px;
+  border-radius: 3px;
+  float: left;
+  margin: 4px 1px;
+}
+body #simulator #home-screen #topBar #signalBars .first {
+  margin-left: 5px;
+}
+body #simulator #home-screen #topBar #carrier {
+  position: relative;
+  top: -4px;
+  color: white;
+  font-family: Arial;
+  font-size: 11px;
+  margin-left: 1px;
+}
+body #simulator #home-screen #topBar #wifi {
+  height: 9px;
+  position: relative;
+  top: -3px;
+}
+body #simulator #home-screen #topBar #time {
+  position: absolute;
+  left: 0;
+  color: white;
+  font-family: Arial;
+  font-size: 12px;
+  width: 100%;
+  text-align: center;
+}
+body #simulator #home-screen #topBar #battery {
+  position: absolute;
+  right: 3px;
+  top: 1px;
+  height: 10px;
+}
 body #simulator #simulator-screen {
   position: absolute;
   top: 116px;

@@ -56,6 +56,54 @@ body {
 					}
 				}
 			}
+			#topBar {
+				position:absolute;
+				top:0;
+				left:0;
+				width:100%;
+				height:13px;
+				#signalBars {
+					.signalBall {
+						background-color:white;
+						height:5px;
+						width:5px;
+						border-radius:3px;
+						float:left;
+						margin:4px 1px;
+					}
+					.first {
+						margin-left:5px;
+					}
+				}
+				#carrier {
+					position:relative;
+					top:-4px;
+					color:white;
+					font-family:Arial;
+					font-size:11px;
+					margin-left:1px;
+				}
+				#wifi {
+					height:9px;
+					position:relative;
+					top:-3px;
+				}
+				#time {
+					position:absolute;
+					left:0;
+					color:white;
+					font-family:Arial;
+					font-size:12px;
+					width:100%;
+					text-align:center;
+				}
+				#battery {
+					position:absolute;
+					right:3px;
+					top:1px;
+					height:10px;
+				}
+			}
 		}
 		#simulator-screen {
 			.displaySettings;

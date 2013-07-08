@@ -19,8 +19,9 @@ var Simulator = {
 	Home: function () {
 		Simulator.ShowHomeScreen();
 		Simulator.LoadBackground();
+		window.setInterval(function () {Simulator.LoadTopBar();}, 5000);
 		var $apps = Simulator.LoadApps();
-		$('#home-screen').empty().append($apps);
+		$('#home-screen').remove('.app-list').append($apps);
 	},
 	LoadBackground: function () {
 		$.get('config.xml', function (data) {
@@ -55,5 +56,19 @@ var Simulator = {
 	StartApp: function (url) {
 		$('#simulator-screen').removeClass('hidden').attr('src', url);
 		$('#home-screen').addClass('hidden');
+	},
+	LoadTopBar: function () {
+		var d = new Date();
+		var hour = d.getHours();
+		var ap = "AM";
+		if(hour === 0) {
+			hour = 12;
+		} else if(hour === 12) {
+			ap = "PM";
+		} else if(hour > 12) {
+			hour = hour - 12;
+			ap = "PM";
+		}
+		$('#time').html(hour + ":" + d.getMinutes() + ap);
 	}
 };
