@@ -8,6 +8,12 @@ Completely client side code that can be placed on ANY website running with ANY f
 
 ##Current Version##
 
+**1.0.1 (beta)**
+
+* Small patch to add the top bar to the home screen. iOS 7 style.
+
+##Previous Versions##
+
 **1.0.0 (beta)**
 
 * Simulator is now functional, though very limited. 
@@ -45,7 +51,6 @@ Completely client side code that can be placed on ANY website running with ANY f
 
 ##Feature Requests##
 
-* Top bar for home screen showing current time and other simulated data.
 * Scrolling or paging for home screen
 * General animations to mimic iPhone behavior and appearance.
 * Installer app embedded in the simulator (but optional through config settings) to open a 'settings' like page that will allow setting up of the config.xml file through a simple UI.
