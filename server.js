@@ -55,27 +55,29 @@ var simulator = simulator || {};
 			
 			function SaveSettings() {
 				fs.readFile('config.xml', function (err, data) {
-					if(err) {throw err;}	
-					var $xml = $(data.toString()).find('settings').each(function () {
-						$(this).find('background > color').text($data.backgroundColor);
-						$(this).find('background > image').text($data.backgroundImage);
+					if(err) {throw err;}
+					var newxml = '';	
+					$(data.toString()).each(function () {
+						var $this = $(this);
+						$this.find('settings > background > color').text($data.backgroundColor);
+						$this.find('settings > background > image').text($data.backgroundImage);
 						if($data.startupEnabled === "on") {
-							$(this).find('startup > enabled').text("true");
+							$this.find('settings > startup > enabled').text("true");
 						} else {
-							$(this).find('startup > enabled').text("false");
+							$this.find('settings > startup > enabled').text("false");
 						}
 						if($data.splashEnabled === "on") {
-							$(this).find('startup > splash > enabled').text("true");
+							$this.find('settings > startup > splash > enabled').text("true");
 						} else {
-							$(this).find('startup > splash > enabled').text("false");
+							$this.find('settings > startup > splash > enabled').text("false");
 						}
-						$(this).find('startup > splash > image').text($data.splashImage);
-						$(this).find('security > password').text($data.password);
+						$this.find('settings > startup > splash > image').text($data.splashImage);
+						$this.find('settings > security > password').text($data.password);
+						var div = $('<div/>');
+						div.append($this);
+						newxml = div.html();
 					});
-					
-					console.log($xml.xml());
-					
-					fs.writeFile('config.xml', data.toString(), function (err) {
+					fs.writeFile('config.xml', newxml, function (err) {
 						if(err) {throw err;}
 					});
 				});

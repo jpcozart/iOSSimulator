@@ -26,6 +26,7 @@
         </div>
 		<div id="options" data-role="page" data-theme="d">
 			<div data-role="content">
+				<a href="#settings" data-role="button" data-mini="true" data-inline="true">Back</a>
 				<h2>Simulator options</h2>
 				<form id="simulator-options-form" action="http://localhost:8000" method="post">
 					<input type="hidden" name="action" value="savesettings">
@@ -53,8 +54,9 @@
 		</div>
 		<div id="manage-apps" data-role="page" data-theme="d">
 			<div data-role="content">
-				<h2> Manage Apps</h2>
-				
+				<a href="#settings" data-role="button" data-mini="true" data-inline="true">Back</a>
+				<h2>Manage Apps</h2>
+				<ul id="manage-apps-list" data-role="listview" data-inset="true"></ul>
 			</div>
 		</div>
 		<div id="help" data-role="page" data-theme="d">

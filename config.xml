@@ -1,6 +1,7 @@
 <simulator version="1.1.0">
 	<apps>
 		<app>
+			<id>1</id>
 			<enabled>true</enabled>
 			<title>O2 Calculator</title> <!-- The text you would like to show up under the app icon -->
 			<icon>/apps/O2Calculator/icon.png</icon> <!-- relative url to the icon for the app -->
@@ -8,6 +9,7 @@
 			<password></password>
 		</app>
 		<app>
+			<id>2</id>
 			<enabled>true</enabled>
 			<title>LZA</title>
 			<icon>/apps/LZA/icon.png</icon>
@@ -18,7 +20,7 @@
 	<system>
 		<settings>
 			<background>
-		    	<color>red</color> <!-- The color you want the background of the home page to be -->
+		    	<color>orange</color> <!-- The color you want the background of the home page to be -->
 				<image>/img/bg.png</image> <!-- A background image for the home page, setting this will overrite the color setting above-->
 			</background>
 			<startup>
@@ -34,18 +36,21 @@
 		</settings>
 		<apps>
 			<app>
+				<id>S1</id>
 				<enabled>true</enabled>
 				<title>Settings</title>
 				<icon>/apps/LZA/icon.png</icon>
 				<index>/system/apps/settings/settings.html</index>
 			</app>
 			<app>
+				<id>S2</id>
 				<enabled>true</enabled>
 				<title>Mockup Creator</title>
 				<icon>/system/apps/mockup/mockup.png</icon>
 				<index>/system/apps/mockup/mockup.html</index>
 			</app>
 			<app>
+				<id>S3</id>
 				<enabled>true</enabled>
 				<title>Feedback</title>
 				<icon>/system/apps/feedback/feedback.png</icon>
