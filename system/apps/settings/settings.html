@@ -28,23 +28,24 @@
 			<div data-role="content">
 				<h2>Simulator options</h2>
 				<form id="simulator-options-form" action="http://localhost:8000" method="post">
+					<input type="hidden" name="action" value="savesettings">
 					<h3>Home Screen</h3>
 					<label for="option-background-color">Background Color:</label>
-					<input type="text" id="option-background-color" placeholder="Color">
+					<input type="text" id="option-background-color" name="backgroundColor" placeholder="Color">
 					<label for="option-background-image">Background Image:</label>
-					<input type="text" id="option-background-image" placeholder="Image URL">
+					<input type="text" id="option-background-image" name="backgroundImage" placeholder="Image URL">
 					<hr>
 					<h3>Startup</h3>
 					<label for="option-startup-enabled">Startup enabled</label>
-					<input type="checkbox" id="option-startup-enabled">
+					<input type="checkbox" id="option-startup-enabled" name="startupEnabled">
 					<label for="option-splash-enabled">Splash Screen Enabled</label>
-					<input type="checkbox" id="option-splash-enabled">
+					<input type="checkbox" id="option-splash-enabled" name="splashEnabled">
 					<label for="option-splash-image">Splash Screen Image:</label>
-					<input type="text" id="option-splash-image" placeholder="Image URL">
+					<input type="text" id="option-splash-image" name="splashImage" placeholder="Image URL">
 					<hr>
 					<h3>Security</h3>
 					<label for="option-password">Password:</label>
-					<input type="password" id="option-password" placeholder="Password">
+					<input type="password" id="option-password" name="password" placeholder="Password">
 					<hr>
 					<input type="submit" id="save-options" value="Save Settings">
 				</form>
